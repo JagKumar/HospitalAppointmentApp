@@ -1,0 +1,77 @@
+<div class="container py-3">
+    <div class="card mt-1">
+        <div class="card-header">{{AppointmentType}} </div>
+
+        <div class="card-body">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
+                <input type="hidden" name="id" formControlName="id">
+                <div class="form-row row mt-2">
+                    <div class="form-group col-md-6 ">
+                        <label for="PetName">Pet Name:</label>
+                        <input type="text" class="form-control" name="petName" id="petName" formControlName="petName"
+                            placeholder="PetName">
+                        <div class="error-block"
+                            *ngIf="myForm.controls['petName'].invalid && myForm.controls['petName'].touched">
+                            Pet Name is required
+                        </div>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="PetOwnersName">Owner Name</label>
+                        <input type="text" formControlName="petOwnersName" name="petOwnersName" class="form-control"
+                            id="PetOwnersName" placeholder="Owner Name">
+                        <div class="error-block"
+                            *ngIf="myForm.controls['petOwnersName'].invalid && myForm.controls['petOwnersName'].touched">
+                            Owner name is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row mt-2">
+                    <div class="form-group col-md-6">
+                        <label for="PetOwnersAddress">Address:</label>
+                        <input type="text" class="form-control" name="petOwnersAddress" id="PetOwnersAddress"
+                            formControlName="petOwnersAddress" placeholder="Pet Owners Address">
+
+                        <div class="error-block"
+                            *ngIf="myForm.controls['petOwnersAddress'].invalid && myForm.controls['petOwnersAddress'].touched">
+                            Owner Address is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="PetOwnersContactNo">Contact Number</label>
+                        <input type="text" formControlName="petOwnersContactNo" name="petOwnersContactNo"
+                            class="form-control" id="PetOwnersContactNo" placeholder="Pet Owner Contact Number">
+                        <div class="error-block"
+                            *ngIf="myForm.controls['petOwnersContactNo'].invalid && myForm.controls['petOwnersContactNo'].touched">
+                            Owner Contact No is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row mt-2">
+                    <div class="form-group col-md-6">
+                        <label for="ReasonforAppointment">Reason</label>
+                        <input type="text" class="form-control" name="reasonforAppointment" id="ReasonforAppointment"
+                            formControlName="reasonforAppointment" placeholder="Reason">
+                        <div class="error-block"
+                            *ngIf="myForm.controls['reasonforAppointment'].invalid && myForm.controls['reasonforAppointment'].touched">
+                            Reason for Appointment is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="DateofAppointment">Date</label>
+                        <input type="date" class="form-control" name="dateofAppointment"
+                            value="{{dt | date:'yyyy-MM-dd'}}" formControlName="dateofAppointment">
+                        <div class="error-block"
+                            *ngIf="myForm.controls['dateofAppointment'].invalid && myForm.controls['dateofAppointment'].touched">
+                            Date of Appointment is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group py-3">
+                    <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary mt-1 mr-2">Save</button>
+                    <a routerLink="/Appointment" class="btn btn-danger mt-1 px-2 mr-3">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
